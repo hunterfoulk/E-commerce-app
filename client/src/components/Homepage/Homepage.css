@@ -1,0 +1,383 @@
+.banner {
+  width: 100vw;
+  margin-top: 60px;
+  position: relative;
+}
+
+.banner img {
+  width: 100vw;
+}
+
+.bannerdetails {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+}
+
+.bannertext {
+  font-size: 30px;
+  color: #282829;
+}
+
+.bannerbtn {
+  padding: 10px;
+  margin: 40px 80px 0px 80px;
+  font-size: 18px;
+  background-color: rgb(225, 224, 222, 0.6);
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  outline: none;
+  border: 1px black solid;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bannerbtn:hover {
+  background-color: rgba(126, 125, 123, 0.15);
+}
+
+/* EXCLUSIVES */
+
+.exclusivesparent {
+  width: 100%;
+  height: 950px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 50px;
+}
+
+/* MENS COLLECTION */
+.menscollection {
+  position: relative;
+}
+
+.menscollectiontitle {
+  color: rgb(13, 26, 38);
+  font-size: 35px;
+  text-align: center;
+  letter-spacing: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.menscollectiontitle:hover {
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
+.menscollectiontitle:before,
+.menscollectiontitle:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -1px;
+  background: rgb(13, 26, 38);
+}
+
+.menscollectiontitle:before {
+  left: 50;
+  transition: 0.5s;
+}
+
+.menscollectiontitle:after {
+  background: rgb(13, 26, 38);
+  right: 0;
+}
+
+.menscollectiontitle:hover:before {
+  background: rgb(13, 26, 38);
+  width: 75%;
+  transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
+}
+
+.menscollectiontitle:hover:after {
+  background: transparent;
+  width: 100%;
+}
+.menscollect {
+  position: relative;
+  left: 10px;
+}
+
+/* CAROUSEL */
+.slide-container {
+  width: 480px;
+  margin-top: 40px;
+}
+
+.each-slide {
+  background-size: cover;
+  width: 500px;
+}
+
+.each-slide img {
+  width: 520px;
+  left: 40%;
+}
+
+/* WOMENS COLLECTION */
+.womenscollection {
+  position: relative;
+  top: 20px;
+
+  left: -100px;
+}
+
+.womenscollection img {
+  width: 650px;
+  height: 650px;
+}
+
+.womenscard {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.cardaccent {
+  position: absolute;
+  top: 60px;
+  left: 55px;
+  -webkit-filter: grayscale(65%);
+  filter: grayscale(65%);
+}
+
+.womenscollectiontitle {
+  color: rgb(13, 26, 38);
+  font-size: 35px;
+  letter-spacing: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.womenscollectiontitle:hover {
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
+.womenscollectiontitle:before,
+.womenscollectiontitle:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -1px;
+  background: rgb(13, 26, 38);
+}
+
+.womenscollectiontitle:before {
+  left: 0;
+  transition: 0.5s;
+}
+
+.womenscollectiontitle:after {
+  background: rgb(13, 26, 38);
+  right: 0;
+}
+
+.womenscollectiontitle:hover:before {
+  background: rgb(13, 26, 38);
+  width: 100%;
+  transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
+}
+
+.womenscollectiontitle:hover:after {
+  background: transparent;
+  width: 100%;
+}
+
+/* PIC HOVERS */
+
+.pictexts {
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  position: relative;
+  text-decoration: none;
+  color: rgb(13, 26, 38);
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.pictexts:hover {
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
+.pictexts:before,
+.pictexts:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -1px;
+  background: rgb(13, 26, 38);
+}
+
+.pictexts:before {
+  left: 25%;
+  transition: 0.5s;
+}
+
+.pictexts:after {
+  background: rgb(13, 26, 38);
+  right: 75%;
+}
+
+.pictexts:hover:before {
+  background: rgb(13, 26, 38);
+  width: 50%;
+  transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
+}
+
+.pictexts:hover:after {
+  background: transparent;
+  width: 100%;
+}
+
+/* PIC HOVERS 2 */
+
+.bannergif {
+  position: relative;
+  width: 100vw;
+}
+.bannercontainer {
+  width: 100vw;
+  position: relative;
+}
+.bottombuttonscontainer {
+  position: absolute;
+  width: 100%;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+}
+
+.bottomimagecontainer {
+  width: 100vw;
+}
+
+.bottomcontainer {
+  height: 100%;
+  width: 100%;
+  padding: 50px 0px 50px 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.bottomcontainer img {
+  width: 400px;
+  height: 460px;
+}
+
+.bottomimages1 a {
+  text-align: center;
+  text-decoration: none;
+}
+
+/* FOOTER*/
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+footer {
+  background-color: #eee;
+  color: #bbb;
+  line-height: 1.5;
+}
+footer a {
+  text-decoration: none;
+  color: black;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-titles {
+  color: black;
+  font-family: "Merriweather", serif;
+  font-size: 1.375rem;
+  padding-bottom: 0.625rem;
+}
+/* sticks footer to bottom */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.footercontainer {
+  flex: 1;
+  margin-top: 80px;
+}
+/* FOOTER CONTAINER */
+.footer-main {
+  padding: 1.25rem 1.875rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media only screen and (min-width: 29.8125rem) {
+  .footer-main {
+    justify-content: space-evenly;
+  }
+}
+@media only screen and (min-width: 77.5rem) {
+  .footer-main {
+    justify-content: space-evenly;
+  }
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+}
+input[type="email"] {
+  border: 0;
+  padding: 0.625rem;
+  margin-top: 0.3125rem;
+}
+input[type="submit"] {
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  padding: 0.625rem 0.9375rem;
+  margin-top: 0.3125rem;
+}
+
+/* Footer legal */
+.footer-copyright {
+  padding: 8px;
+  background-color: lightgrey;
+}
+.footer-copyright-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-copyright-list li {
+  margin: 0.125rem 1rem;
+  white-space: nowrap;
+  color: black;
+}
+/* one before the last child */
+.footer-copyright-list li:nth-last-child(2) {
+  flex: 1;
+}
+.newslettertext {
+  color: black;
+}

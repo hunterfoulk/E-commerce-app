@@ -1,0 +1,75 @@
+.womens-prodcontainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  position: relative;
+  max-width: 2000px;
+  height: 100vh;
+  top: 60px;
+  left: 50%;
+  transform: translate(-50%);
+  color: white;
+}
+/* 
+.prodbanner {
+  flex: 100%;
+  height: 300px;
+  background-color: rgb(66, 0, 46);
+} */
+
+.womens-prodheader {
+  flex: 100%;
+  background-color: rgb(40, 0, 66);
+}
+
+.womens-prodsidebar {
+  display: flex;
+  flex: 10%;
+  height: 100%;
+  background-color: rgb(0, 36, 53);
+}
+
+.womens-sidebarcontents {
+  position: relative;
+  width: 55%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 15px;
+  margin: 20px 0px 20px 0px;
+  border: 1px black solid;
+}
+
+.womens-sidebarcontents li {
+  list-style: none;
+}
+
+.womens-section {
+  padding: 20px;
+  border-bottom: 1px black solid;
+}
+
+.womens-productslist {
+  display: flex;
+  flex: 60%;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgb(8, 34, 0);
+}
+
+.womens-productslist li {
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  margin: 20px;
+  align-items: center;
+  text-align: center;
+  list-style: none;
+
+  background-color: rgb(43, 43, 43);
+}
+.womens-productslist img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-width: 100px;
+}
