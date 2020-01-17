@@ -1,0 +1,52 @@
+.cart {
+  position: fixed;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 15vw;
+  top: 60px;
+  right: 0px;
+  margin-left: auto;
+  padding: 20px;
+  z-index: 1000;
+  background: white;
+  border-style: solid;
+  border-color: rgb(13, 26, 38);
+  border-width: 1px;
+}
+.cart-item {
+  margin-top: 10px;
+  list-style: none;
+  text-align: right;
+  color: rgb(13, 26, 38);
+  padding-bottom: 30px;
+}
+.cart-images {
+  width: 130px;
+  height: 185px;
+}
+.libutton {
+  margin: 5px;
+  cursor: pointer;
+  padding: 2px;
+  border-style: 3px;
+}
+.quant {
+  width: 16px;
+  padding-left: 5px;
+  appearance: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.iconup {
+  position: relative;
+  cursor: pointer;
+  top: 5px;
+}
+.icondown {
+  position: relative;
+  cursor: pointer;
+  top: 5px;
+}

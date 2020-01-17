@@ -13,7 +13,7 @@ a {
 /*Navbar*/
 
 #navbar {
-  background: #eee;
+  background: white;
   color: rgb(13, 26, 38);
   position: fixed;
   top: 0;
@@ -21,7 +21,7 @@ a {
   line-height: 60px;
   width: 100%;
   z-index: 200;
-  border-bottom: 1px solid rgba(163, 158, 158, 0.5);
+  /*  border-bottom: 1px solid rgba(163, 158, 158, 0.5); */
 }
 
 .nav-wrapper {
@@ -295,10 +295,12 @@ a {
 
 .womens-dropdown-content {
   position: relative;
-  background-color: #eee;
+  background-color: white;
+  border: 1px solid white;
   width: 100%;
   box-shadow: 5px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  border-radius: 6px;
 }
 
 .womens-dropdown-content p {
@@ -347,10 +349,12 @@ a {
 
 .mens-dropdown-content {
   position: relative;
-  background-color: #eee;
+  background-color: white;
+  border: 1px solid white;
   width: 100%;
   box-shadow: 5px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  border-radius: 6px;
 }
 
 .mens-dropdown-content p {

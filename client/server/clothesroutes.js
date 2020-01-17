@@ -19,34 +19,4 @@ router.route("/create").post((req, res) => {
   );
 });
 
-/*router.route("/mensjeans").get((req, res) => {
-  Clothes.find()
-    .then(clothes => res.json(clothes))
-    .catch(err => res.status(400).json("Error: " + err));
-});
-
-router.route("/mensshorts").get((req, res) => {
-  Clothes.find()
-    .then(clothes => res.json(clothes))
-    .catch(err => res.status(400).json("Error: " + err));
-});
-
-router.route("/womensshirts").get((req, res) => {
-  Clothes.find()
-    .then(clothes => res.json(clothes))
-    .catch(err => res.status(400).json("Error: " + err));
-});
-
-router.route("/womensjeans").get((req, res) => {
-  Clothes.find()
-    .then(clothes => res.json(clothes))
-    .catch(err => res.status(400).json("Error: " + err));
-});
-
-router.route("/womensshorts").get((req, res) => {
-  Clothes.find()
-    .then(clothes => res.json(clothes))
-    .catch(err => res.status(400).json("Error: " + err));
-});*/
-
 module.exports = router;

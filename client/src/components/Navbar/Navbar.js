@@ -5,15 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import Cart from "../Cart/Cart";
 import { CSSTransition } from "react-transition-group";
 
-function Navbar() {
+function Navbar({ open }) {
   //cart open
-  const [cartOpen, setCartOpen] = useState(false);
-  const handleCartOpen = () => {
-    setCartOpen(!cartOpen);
-  };
+
   //mens dropdown
   const [mensDropdown, setMensDropdown] = useState(false);
   const [womensDropdown, setWomensDropdown] = useState(false);
@@ -100,12 +96,9 @@ function Navbar() {
           </div>
         </div>
         <div className="fa-icons">
-          {cartOpen && <Cart />}
-          {cartOpen && <Cart click={handleCartOpen} />}
-
           <FontAwesomeIcon className="searchitems" icon={faSearch} size="lg" />
 
-          <Link onClick={handleCartOpen}>
+          <Link onClick={open}>
             <FontAwesomeIcon
               className="searchitems"
               icon={faShoppingBag}
