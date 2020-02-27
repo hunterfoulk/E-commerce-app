@@ -24,22 +24,39 @@ function Cart() {
     }
   }, [products]);
 
-  const inc = () => {
-    dispatch({
-      type: "increment",
-      products: products[0].quantity++
-    });
+  const handleDecrementProduct = item => {
+    if (products.some(i => i._id === item._id)) {
+      if (item.quantity > 1) {
+        let productsCopy = [...products];
+        let indexOfProduct = productsCopy.findIndex(i => i._id === item._id);
+        productsCopy[indexOfProduct].quantity--;
+
+        dispatch({
+          type: "updateCart",
+          products: productsCopy
+        });
+      } else {
+        let productsCopy = products.filter(i => i._id !== item._id);
+        dispatch({
+          type: "updateCart",
+          products: productsCopy
+        });
+      }
+    }
   };
 
-  const dec = () => {
-    console.log(products);
-    // dispatch({
-    //   type: "decrement",
-    //   products: products.quantity--
-    // });
-  };
+  const handleIncrementProduct = item => {
+    if (products.some(i => i._id === item._id)) {
+      let productsCopy = [...products];
+      let indexOfProduct = productsCopy.findIndex(i => i._id === item._id);
+      productsCopy[indexOfProduct].quantity++;
 
-  useEffect(() => {}, [products]);
+      dispatch({
+        type: "updateCart",
+        products: productsCopy
+      });
+    }
+  };
 
   return (
     <>
@@ -55,9 +72,12 @@ function Cart() {
                 value={item.quantity}
                 name="quantity"
               ></input>
-              <ArrowDropUpIcon onClick={() => inc(item)} className="iconup" />
+              <ArrowDropUpIcon
+                onClick={() => handleIncrementProduct(item)}
+                className="iconup"
+              />
               <ArrowDropDownIcon
-                onClick={() => dec(item)}
+                onClick={() => handleDecrementProduct(item)}
                 className="icondown"
               />
               <button className="libutton" onClick={() => handleRemove(item)}>

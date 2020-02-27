@@ -10,6 +10,7 @@ import { useStateValue } from "./state";
 
 export default function App() {
   const [{ components, products }, dispatch] = useStateValue();
+
   const handleCartOpen = () => {
     if (products.length !== 0)
       dispatch({
@@ -20,6 +21,7 @@ export default function App() {
       });
   };
 
+  //saving added cart products to local storage
   useEffect(() => {
     const productsFromLocalStorage = JSON.parse(
       localStorage.getItem("my-products")
@@ -32,7 +34,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    console.log("products changed: ", products);
     localStorage.setItem("my-products", JSON.stringify(products));
   }, [products]);
 
@@ -40,10 +41,12 @@ export default function App() {
     <Router>
       <Navbar open={handleCartOpen} />
       {components.cart && <Cart />}
-      <Route exact path="/" component={Homepage} />
-      <Route path="/mens" component={Mens} />
-      <Route path="/womens" component={Womens} />
-      <Route path="/contact" component={Contact} />
+      <div className="main">
+        <Route exact path="/" component={Homepage} />
+        <Route path="/mens" component={Mens} />
+        <Route path="/womens" component={Womens} />
+        <Route path="/contact" component={Contact} />
+      </div>
     </Router>
   );
 }

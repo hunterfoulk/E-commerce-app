@@ -4,29 +4,26 @@ import axios from "axios";
 import { useStateValue } from "../../state";
 
 export default function Mens() {
-  const [{ products }, dispatch] = useStateValue();
-  const [initialPull, setInitialPull] = useState([]);
+  const [{ products, mensType }, dispatch] = useStateValue();
   const [clothes, setClothes] = useState([]);
 
   const request = async () => {
+    let queryString = "?gender=MEN";
+    if (mensType) queryString += `&category=${mensType}`;
+
     const res = await axios.get(
-      `http://localhost:5000/clothes/products?gender=MEN`
+      `http://localhost:5000/clothes/products${queryString}`
     );
-    setInitialPull(res.data);
+
     setClothes(res.data);
   };
+
   useEffect(() => {
     request();
-  }, []);
+  }, [mensType]);
 
   const filterCategory = e => {
-    const name = e.target.title;
-    console.log(e.target.title);
-    console.log(e.target);
-    const newFilters = initialPull.filter(article => {
-      return article.category === name;
-    });
-    setClothes(newFilters);
+    dispatch({ type: "mensType", mensType: e.target.title });
   };
 
   //add product and quanity to cart
@@ -39,14 +36,14 @@ export default function Mens() {
       let productsCopy = [...products];
       let indexOfProduct = productsCopy.findIndex(p => p._id === product._id);
       productsCopy[indexOfProduct].quantity++;
-
-      await dispatch({
+      //console.log("productCopy", productCopy);
+      dispatch({
         type: "addProduct",
         products: productsCopy
       });
     } else {
       //if not add the product object to the cart
-      await dispatch({
+      dispatch({
         type: "addProduct",
         products: [...products, productCopy]
       });
@@ -79,7 +76,7 @@ export default function Mens() {
 
             <div className="section">
               <h3>Shop by category</h3>
-              <li onClick={request}>View All</li>
+              <li onClick={filterCategory}>View All</li>
               <li onClick={filterCategory} id="cat" title="TOP">
                 Tops
               </li>

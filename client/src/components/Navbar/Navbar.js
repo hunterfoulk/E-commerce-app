@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { useStateValue } from "../../state";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { CSSTransition } from "react-transition-group";
 
-function Navbar({ open }) {
-  //cart open
 
-  //mens dropdown
+
+function Navbar({ open }) {
+  const [{ mensType, womensType }, dispatch] = useStateValue();
   const [mensDropdown, setMensDropdown] = useState(false);
   const [womensDropdown, setWomensDropdown] = useState(false);
   const [clickout, setClickout] = useState(false);
+  const [data, setData] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [searchdropdown, setSearchdropdown] = useState(false);
 
   const Clickout = () => (
     <div className="clickout" onClick={toggleMensDropdown}></div>
@@ -34,6 +38,42 @@ function Navbar({ open }) {
     setClickout(true);
   };
 
+  //search filter
+  const handleSearchValue = async e => {
+    if (e.target.value !== "") {
+      setSearchdropdown(true);
+      let filteredData = products.filter(
+        item =>
+          item.title?.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          item.gender?.toLowerCase().includes(e.target.value.toLowerCase()) ||
+          item.category.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+
+      setData(filteredData);
+    } else {
+      setData([]);
+    }
+  };
+
+  useEffect(() => {
+    console.log(data);
+    if (data.length === 0) {
+      setSearchdropdown(false);
+    }
+  }, [data]);
+
+  //search filter
+  useEffect(() => {
+    const fetchProducts = async () => {
+      let response = await fetch(`http://localhost:5000/clothes/products`);
+      let responseData = await response.json();
+      setProducts(responseData);
+    };
+    fetchProducts();
+    console.log("fetching on first render...");
+  }, []);
+
+
   return (
     <>
       {mensDropdown && <Clickout />}
@@ -50,7 +90,7 @@ function Navbar({ open }) {
                 <a href="/">Home</a>
               </li>
               <li className="navlink">
-                <a href="/womens" onMouseEnter={toggleWomensDropdown}>
+                <a href="/womens" onMouseEnter={() => toggleWomensDropdown()}>
                   Womens
                   <CSSTransition
                     in={womensDropdown}
@@ -61,16 +101,43 @@ function Navbar({ open }) {
                   >
                     <div className="womens-dropdown">
                       <div className="womens-dropdown-content">
-                        <p>Shirts</p>
-                        <p>Jeans</p>
-                        <p>Shorts</p>
+                        <Link
+                          to="/womens"
+                          onClick={() =>
+                            dispatch({ type: "womensType", womensType: "TOP" })
+                          }
+                        >
+                          Shirts
+                        </Link>
+                        <Link
+                          to="/womens"
+                          onClick={() =>
+                            dispatch({
+                              type: "womensType",
+                              womensType: "JEANS"
+                            })
+                          }
+                        >
+                          Jeans
+                        </Link>
+                        <Link
+                          to="/womens"
+                          onClick={() =>
+                            dispatch({
+                              type: "womensType",
+                              womensType: "SHORTS"
+                            })
+                          }
+                        >
+                          Shorts
+                        </Link>
                       </div>
                     </div>
                   </CSSTransition>
                 </a>
               </li>
               <li className="navlink">
-                <a href="/mens" onMouseEnter={toggleMensDropdown}>
+                <a href="/mens" onMouseEnter={() => toggleMensDropdown()}>
                   Mens
                 </a>
                 <CSSTransition
@@ -82,9 +149,30 @@ function Navbar({ open }) {
                 >
                   <div className="mens-dropdown">
                     <div className="mens-dropdown-content">
-                      <p>Shirts</p>
-                      <p>Jeans</p>
-                      <p>Shorts</p>
+                      <Link
+                        to="/mens"
+                        onClick={() =>
+                          dispatch({ type: "mensType", mensType: "TOP" })
+                        }
+                      >
+                        Shirts
+                      </Link>
+                      <Link
+                        to="/mens"
+                        onClick={() =>
+                          dispatch({ type: "mensType", mensType: "JEANS" })
+                        }
+                      >
+                        Jeans
+                      </Link>
+                      <Link
+                        to="/mens"
+                        onClick={() =>
+                          dispatch({ type: "mensType", mensType: "SHORTS" })
+                        }
+                      >
+                        Shorts
+                      </Link>
                     </div>
                   </div>
                 </CSSTransition>
@@ -96,6 +184,12 @@ function Navbar({ open }) {
           </div>
         </div>
         <div className="fa-icons">
+          <input
+            placeholder="Search"
+            className="searchbar"
+            type="search"
+            onChange={handleSearchValue}
+          ></input>
           <FontAwesomeIcon className="searchitems" icon={faSearch} size="lg" />
 
           <Link onClick={open}>
@@ -128,6 +222,24 @@ function Navbar({ open }) {
           </li>
         </ul>
       </div>
+
+      {searchdropdown && (
+        <div className="searchcontainer">
+        <div className="filtered-search">
+          {data.map((items, index) => (
+            <ul key={index} className="searchul">
+              <Link to={items.gender === "MEN" ? "/mens" : "/womens"}>
+                <li>{items.gender}</li>
+              </Link>
+              <li>
+                <img className="search-imgs" src={items.imgurl} alt="/"></img>
+              </li>
+              <li> {items.title}</li>
+            </ul>
+          ))}
+        </div>
+      </div>
+      )}
     </>
   );
 }

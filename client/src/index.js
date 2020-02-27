@@ -8,9 +8,11 @@ function Index() {
   let initialState = {
     components: {
       cart: false,
-      sidebar: false
+      search: false
     },
-    products: []
+    products: [],
+    mensType: "",
+    womensType: ""
   };
 
   const reducer = (state, action) => {
@@ -33,18 +35,17 @@ function Index() {
           products: action.products
         };
         break;
-      case "increment":
+      case "mensType":
         return {
           ...state,
-          products: [...action.products.quantity++]
+          mensType: action.mensType
         };
         break;
-      case "decrement":
+      case "womensType":
         return {
           ...state,
-          products: [...action.products.quantity--]
+          womensType: action.womensType
         };
-        break;
       default:
         return state;
     }

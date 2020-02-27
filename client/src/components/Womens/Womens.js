@@ -4,29 +4,26 @@ import axios from "axios";
 import { useStateValue } from "../../state";
 
 export default function Womens() {
-  const [{ products }, dispatch] = useStateValue();
-  const [initialPull, setInitialPull] = useState([]);
+  const [{ products, womensType }, dispatch] = useStateValue();
+
   const [clothes, setClothes] = useState([]);
 
   const request = async () => {
-    console.log("request");
+    let queryString = "?gender=WOMEN";
+    if (womensType) queryString += `&category=${womensType}`;
+
     const res = await axios.get(
-      "http://localhost:5000/clothes/products?gender=WOMEN"
+      `http://localhost:5000/clothes/products${queryString}`
     );
-    console.log(res.data);
-    setInitialPull(res.data);
+
     setClothes(res.data);
   };
   useEffect(() => {
     request();
-  }, []);
+  }, [womensType]);
 
   const filterCategory = e => {
-    const name = e.target.title;
-    const newFilteredItem = initialPull.filter(article => {
-      return article.category === name;
-    });
-    setClothes(newFilteredItem);
+    dispatch({ type: "womensType", womensType: e.target.title });
   };
 
   //add product and quanity to cart
@@ -75,7 +72,7 @@ export default function Womens() {
 
             <div className="womens-section">
               <h3>Shop by category</h3>
-              <li onClick={request}>View All</li>
+              <li onClick={filterCategory}>View All</li>
               <li onClick={filterCategory} id="cat" title="TOP">
                 Tops
               </li>

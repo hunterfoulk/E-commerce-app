@@ -374,3 +374,38 @@ a {
 .mens-dropdown:hover .dropdown-content {
   display: block;
 }
+.searchbar {
+  margin-top: 5px;
+  width: 135px;
+  outline: none;
+  height: 30px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid black;
+}
+
+.searchcontainer {
+  display: flex;
+  background: rgb(243, 246, 243);
+  flex: 1;
+  width: 100%;
+  overflow: auto;
+  position: fixed;
+  margin-top: 60px;
+  margin-left: 5px;
+  margin-bottom: 0;
+  justify-content: space-between;
+  z-index: 100;
+}
+.filtered-search {
+  min-height: min-content;
+  display: flex;
+}
+.filtered-search li {
+  padding: 5px;
+}
+.search-imgs {
+  height: 160px;
+  width: 110px;
+}
